@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 class Square extends React.Component {
+    // This is a constructor, initializes state
+    constructor(props) {
+      super(props); // Must include when defining the constructor of a sub class
+      this.state = {
+        value: null,
+      };
+    }
+
     render() {
       return (
-        <button className="square">
-          {/* TODO */}
+        // () => arrow function syntax
+        // onClick = function() {console.log('click');} == onClick={() => console.log(click)}
+        <button className="square" onClick={() => this.setState({value: 'X'})} >
+          { this.state.value }
         </button>
       );
     }
@@ -14,7 +24,7 @@ class Square extends React.Component {
   
   class Board extends React.Component {
     renderSquare(i) {
-      return <Square />;
+      return <Square value={i} />;
     }
   
     render() {
